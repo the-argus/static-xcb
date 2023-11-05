@@ -7,6 +7,10 @@
             .url = "https://github.com/the-argus/libxcb-zig/archive/423f8e28a55576150cd1704ea86441b1e459ee2d.tar.gz",
             .hash = "1220a0339c23362076e8a6a815fcdfffbd96ad8a540832b36e346a3c2d665142ce99",
         },
+        .chipmunk2d = .{
+            .url = "https://github.com/the-argus/Chipmunk2D/archive/783b43bdcde42e51a313dfcae5b7d4c6cf09d01e.tar.gz",
+            .hash = "1220546a43d155ff42dd2a0e8fc1584cf5159504b8b1475d2e23c6689dc9248b94e8",
+        },
         .compile_commands = .{
             .url = "https://github.com/the-argus/zig-compile-commands/archive/1310c5d03a21f2e55d5272021a4b7c7ee656f613.tar.gz",
             .hash = "122016568d000bacabc11c876dbee168ca6c736a6d1925ee612a63b150cb22518a18",

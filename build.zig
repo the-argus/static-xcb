@@ -34,6 +34,12 @@ pub fn build(b: *std.Build) void {
     exe.linkLibC();
     exe.linkLibrary(xcb);
 
+    const chipmunk = b.dependency("chipmunk2d", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe.linkLibrary(chipmunk.artifact("chipmunk"));
+
     b.installArtifact(exe);
 
     zcc.createStep(b, "cdb", targets.toOwnedSlice() catch @panic("OOM"));
