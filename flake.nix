@@ -18,13 +18,13 @@
           zig_0_11
           gdb
           valgrind
+          # xml files needed to generate xcb headers
           xorg.xcbproto
 
           # build deps ------------------------------------------
           pkg-config
           python3Minimal
           # python lib for header generation
-          xorg.xcbproto
         ];
 
         shellHook = ''
