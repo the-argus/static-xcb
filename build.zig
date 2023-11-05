@@ -39,6 +39,17 @@ pub fn build(b: *std.Build) void {
 
     b.installArtifact(exe);
 
+    // run command "zig build run"
+    const run_cmd = b.addRunArtifact(exe);
+    run_cmd.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_cmd.addArgs(args);
+    }
+
+    const run_step = b.step("run", "Run the app");
+    run_step.dependOn(&run_cmd.step);
+
+    // compilations command step
     zcc.createStep(b, "cdb", targets.toOwnedSlice() catch @panic("OOM"));
 }
 
