@@ -3,3 +3,4 @@ zig-cache/
 .direnv/
 result
 compile_commands.json
+.cache/
