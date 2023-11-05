@@ -22,14 +22,14 @@
           xorg.xcbproto
 
           # build deps ------------------------------------------
-          pkg-config
+          # pkg-config
           python3Minimal
           # python lib for header generation
         ];
 
-        shellHook = ''
-          export XPROTO_INCLUDE_DIR=${pkgs.xorg.xorgproto}/include
-        '';
+        # shellHook = ''
+        #   export XPROTO_INCLUDE_DIR=${pkgs.xorg.xorgproto}/include
+        # '';
       };
   };
 }

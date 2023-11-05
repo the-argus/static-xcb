@@ -8,12 +8,9 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const xproto_header_dir = b.option([]const u8, "xproto_header_dir", "header directory to use for libX11") orelse "";
-
     const xcb = b.dependency("xcb", .{
         .target = target,
         .optimize = optimize,
-        .xproto_header_dir = xproto_header_dir,
     }).artifact("xcb");
 
     const exe = b.addExecutable(.{
