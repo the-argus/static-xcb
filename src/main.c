@@ -1,24 +1,11 @@
-
+#include <stdlib.h>
 #include <xcb/xcb.h>
 
 int main()
 {
-	/* geometric objects */
-	xcb_point_t points[] = {{10, 10}, {10, 20}, {20, 10}, {20, 20}};
-
-	xcb_point_t polyline[] = {{50, 10},
-							  {5, 20}, /* rest of points are relative */
-							  {25, -20},
-							  {10, 10}};
-
-	xcb_segment_t segments[] = {{100, 10, 140, 30}, {110, 25, 130, 60}};
-
-	xcb_rectangle_t rectangles[] = {{10, 50, 40, 20}, {80, 50, 10, 40}};
-
-	xcb_arc_t arcs[] = {{10, 100, 60, 40, 0, 90 << 6},
-						{90, 100, 55, 40, 0, 270 << 6}};
-
-	/* Open the connection to the X server */
+	xcb_rectangle_t rectangles[] = {{10, 50, 40, 20}};
+	
+    /* Open the connection to the X server */
 	xcb_connection_t* connection = xcb_connect(NULL, NULL);
 
 	/* Get the first screen */
@@ -60,22 +47,8 @@ int main()
 	while ((event = xcb_wait_for_event(connection))) {
 		switch (event->response_type & ~0x80) {
 		case XCB_EXPOSE:
-			/* We draw the points */
-			xcb_poly_point(connection, XCB_COORD_MODE_ORIGIN, window,
-						   foreground, 4, points);
-
-			/* We draw the polygonal line */
-			xcb_poly_line(connection, XCB_COORD_MODE_PREVIOUS, window,
-						  foreground, 4, polyline);
-
-			/* We draw the segments */
-			xcb_poly_segment(connection, window, foreground, 2, segments);
-
 			/* draw the rectangles */
-			xcb_poly_rectangle(connection, window, foreground, 2, rectangles);
-
-			/* draw the arcs */
-			xcb_poly_arc(connection, window, foreground, 2, arcs);
+			xcb_poly_rectangle(connection, window, foreground, 1, rectangles);
 
 			/* flush the request */
 			xcb_flush(connection);
